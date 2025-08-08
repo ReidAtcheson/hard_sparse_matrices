@@ -27,15 +27,21 @@ def _symmetrize_and_weight(G, diag_shift=True):
     if diag_shift:
         diag_vals = np.random.uniform(-1.0, 1.0, size=n)
         A = A + sp.diags(diag_vals, offsets=0, shape=(n, n))
+    return A.tocsr()
 
-   return A.tocsr()
 
-
-def random_d_regular_expander(n, d, diag_shift=True):
+def random_d_regular(n, d, diag_shift=True):
     """Uniform-ish random d-regular graph on n nodes."""
     assert d < n
     G = nx.random_regular_graph(d, n)
     return _symmetrize_and_weight(G, diag_shift=diag_shift)
+
+def random_d_regular_expander(n, d, diag_shift=True):
+    """Uniform-ish random d-regular graph on n nodes."""
+    assert d < n
+    G = nx.random_regular_expander_graph(d, n)
+    return _symmetrize_and_weight(G, diag_shift=diag_shift)
+
 
 
 def margulis_gabber_galil_expander(m, diag_shift=True):

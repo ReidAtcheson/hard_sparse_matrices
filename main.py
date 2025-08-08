@@ -18,7 +18,8 @@ def disp(A,name):
 
 
 
-m=4096
-disp(matrices.random_d_regular_expander(m,5).tocsc(),"random_d_regular_expander")
-disp(matrices.margulis_gabber_galil_expander(int(np.sqrt(m))),"margulis_gabber_galil_expander")
+m=12000
+d=3
+disp(matrices.random_d_regular_expander(m,d).tocsc(),"random_d_regular_expander")
+disp(matrices.random_d_regular(m,d).tocsc(),"random_d_regular")
 
